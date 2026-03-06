@@ -299,6 +299,25 @@
     transition: background 0.3s ease;
   }
   .rsvp-btn:hover { background: #c49a64; }
+  /* HERO RSVP PILL */
+  .hero-rsvp-pill {
+    display: inline-block;
+    margin-top: 28px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--crema);
+    border: 1px solid rgba(212,165,116,0.4);
+    padding: 8px 24px;
+    border-radius: 20px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  .hero-rsvp-pill:hover {
+    background: rgba(212,165,116,0.15);
+    border-color: var(--crema);
+  }
   /* FOOTER */
   .footer {
     text-align: center;
@@ -348,6 +367,7 @@
         <div class="detail-value">Joe's House</div>
       </div>
     </div>
+    <a href="#rsvp-section" class="hero-rsvp-pill">RSVP ↓</a>
   </div>
 </div>
 <!-- WHAT TO EXPECT -->
@@ -541,7 +561,7 @@
   </div>
 </div>
 <!-- RSVP -->
-<div class="rsvp">
+<div class="rsvp" id="rsvp-section">
   <h2>Can You Make It?</h2>
   <p>Let Joe know by March 10th so we can have enough coffee (and spoons) for everyone.</p>
   <a href="sms:+16504920072&body=I'm%20in%20for%20Joe's%2040th%20coffee%20cupping!" class="rsvp-btn">Text Joe</a>
