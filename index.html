@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>You're Invited — JT's 40th Birthday Coffee Cupping</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap');
+  :root {
+    --espresso: #2C1810;
+    --crema: #D4A574;
+    --light-roast: #C4956A;
+    --parchment: #F5F0E8;
+    --warm-white: #FDFBF7;
+    --cherry: #8B2635;
+    --gold: #B8860B;
+    --sage: #5C6B54;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--warm-white);
+    color: var(--espresso);
+    line-height: 1.7;
+  }
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, var(--espresso) 0%, #1a0f0a 50%, #3d2417 100%);
+    color: var(--parchment);
+    text-align: center;
+    padding: 90px 40px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at 30% 50%, rgba(212,165,116,0.15) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 30%, rgba(184,134,11,0.1) 0%, transparent 50%);
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+  .hero-invite {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--crema);
+    margin-bottom: 20px;
+    letter-spacing: 0.5px;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.4rem;
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+  .hero h1 em { font-style: italic; color: var(--crema); }
+  .hero .subtitle {
+    font-size: 1.05rem;
+    font-weight: 300;
+    color: rgba(245,240,232,0.7);
+    margin-bottom: 30px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  /* EVENT DETAILS BAR */
+  .details-bar {
+    display: inline-flex;
+    justify-content: center;
+    gap: 28px;
+    flex-wrap: wrap;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(212,165,116,0.25);
+    border-radius: 14px;
+    padding: 18px 36px;
+    margin-top: 10px;
+  }
+  .detail-item {
+    text-align: center;
+  }
+  .detail-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--crema);
+    margin-bottom: 6px;
+    opacity: 0.7;
+  }
+  .detail-value {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: #fff;
+    letter-spacing: 0.3px;
+  }
+  /* LAYOUT */
+  .container { max-width: 800px; margin: 0 auto; padding: 0 30px; }
+  /* SECTION HEADERS */
+  .section-header {
+    text-align: center;
+    padding: 60px 0 40px;
+  }
+  .section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.9rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .section-header p {
+    font-weight: 300;
+    color: #6b5c52;
+    max-width: 520px;
+    margin: 0 auto;
+    font-size: 0.95rem;
+  }
+  .divider {
+    width: 60px;
+    height: 2px;
+    background: var(--crema);
+    margin: 16px auto 0;
+  }
+  /* WHAT TO EXPECT */
+  .expect {
+    background: var(--parchment);
+    padding: 50px 0;
+  }
+  .expect-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .expect-card {
+    background: white;
+    border-radius: 12px;
+    padding: 28px;
+    border: 1px solid rgba(212,165,116,0.2);
+  }
+  .expect-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: var(--espresso);
+  }
+  .expect-card p {
+    font-size: 0.88rem;
+    color: #5a4a3f;
+    line-height: 1.7;
+  }
+  /* FLIGHT PREVIEW */
+  .flight { padding: 20px 0 60px; }
+  .flight-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .flight-item {
+    background: white;
+    border-radius: 12px;
+    padding: 24px 28px;
+    border: 1px solid rgba(212,165,116,0.15);
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+  }
+  .flight-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--crema);
+    line-height: 1;
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+  .flight-info h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .flight-info .origin {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 6px;
+  }
+  .flight-info .teaser {
+    font-size: 0.82rem;
+    color: #7a6b5f;
+    font-style: italic;
+    font-family: 'Playfair Display', serif;
+  }
+  /* HIGHLIGHT BADGE */
+  .highlight {
+    display: inline-block;
+    font-size: 0.55rem;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    padding: 1px 8px;
+    border-radius: 8px;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+  /* TIMELINE */
+  .timeline-section {
+    background: var(--parchment);
+    padding: 20px 0 60px;
+  }
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 24px;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(212,165,116,0.2);
+  }
+  .timeline-item:last-child { border-bottom: none; }
+  .timeline-time {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+    color: var(--crema);
+    font-weight: 500;
+    padding-top: 2px;
+  }
+  .timeline-desc h4 {
+    font-size: 0.92rem;
+    font-weight: 600;
+    margin-bottom: 3px;
+  }
+  .timeline-desc p {
+    font-size: 0.82rem;
+    color: #6b5c52;
+  }
+  /* WHAT TO KNOW */
+  .know {
+    padding: 20px 0 60px;
+  }
+  .know-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+  }
+  .know-item {
+    text-align: center;
+    padding: 28px 20px;
+    background: white;
+    border-radius: 12px;
+    border: 1px solid rgba(212,165,116,0.15);
+  }
+  .know-icon {
+    font-size: 1.6rem;
+    margin-bottom: 12px;
+  }
+  .know-item h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    margin-bottom: 6px;
+  }
+  .know-item p {
+    font-size: 0.8rem;
+    color: #7a6b5f;
+  }
+  /* CTA / RSVP */
+  .rsvp {
+    background: linear-gradient(135deg, var(--espresso) 0%, #1a0f0a 100%);
+    color: var(--parchment);
+    text-align: center;
+    padding: 60px 40px;
+  }
+  .rsvp h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    margin-bottom: 12px;
+  }
+  .rsvp p {
+    font-weight: 300;
+    color: rgba(245,240,232,0.7);
+    max-width: 440px;
+    margin: 0 auto 28px;
+    font-size: 0.95rem;
+  }
+  .rsvp-btn {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--espresso);
+    background: var(--crema);
+    padding: 14px 40px;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+  }
+  .rsvp-btn:hover { background: #c49a64; }
+  /* FOOTER */
+  .footer {
+    text-align: center;
+    padding: 40px 30px;
+    border-top: 1px solid rgba(212,165,116,0.15);
+  }
+  .footer p {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-style: italic;
+    color: #8a7b6e;
+  }
+  /* PRINT & MOBILE */
+  @media print {
+    .hero { padding: 40px 20px; }
+    .rsvp-btn { border: 2px solid var(--crema); }
+    body { font-size: 11pt; }
+  }
+  @media (max-width: 700px) {
+    .hero h1 { font-size: 2.4rem; }
+    .hero { padding: 60px 24px; }
+    .details-bar { gap: 24px; }
+    .expect-grid, .flight-grid { grid-template-columns: 1fr; }
+    .know-grid { grid-template-columns: 1fr; }
+    .timeline-item { grid-template-columns: 80px 1fr; gap: 16px; }
+  }
+</style>
+</head>
+<body>
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-invite">You're invited to</div>
+    <h1>JT's 40th<br><em>A Coffee Cupping Experience</em></h1>
+    <p class="subtitle">Eight extraordinary coffees from around the world. One unforgettable afternoon. No experience necessary.</p>
+    <div class="details-bar">
+      <div class="detail-item">
+        <div class="detail-label">Date</div>
+        <div class="detail-value">Saturday, March 14</div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-label">Time</div>
+        <div class="detail-value">10 AM – 2 PM</div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-label">Place</div>
+        <div class="detail-value">Joe's House</div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- WHAT TO EXPECT -->
+<div class="expect">
+  <div class="container">
+    <div class="section-header">
+      <h2>What to Expect</h2>
+      <p>Coffee cupping is the professional method for tasting and evaluating coffee — and on March 14th, you're the judges.</p>
+      <div class="divider"></div>
+    </div>
+    <div class="expect-grid">
+      <div class="expect-card">
+        <h3>How It Works</h3>
+        <p>You'll taste 8 coffees side by side, each brewed the same simple way: freshly ground coffee steeped directly in hot water. No filters, no gadgets — just coffee, water, and a spoon. This strips away all variables and lets the coffee speak for itself.</p>
+      </div>
+      <div class="expect-card">
+        <h3>How to Taste</h3>
+        <p><strong>Smell first</strong> — both the dry grounds and after water is added. <strong>Slurp loudly</strong> — seriously, the louder the better. Slurping aerates the coffee across your whole palate. <strong>Think about</strong> what fruits, flavors, or textures come to mind. There are no wrong answers.</p>
+      </div>
+      <div class="expect-card">
+        <h3>The Flavor Wheel</h3>
+        <p>Coffee can taste like blueberries, jasmine, brown sugar, red wine, peaches, dark chocolate, or even tomato soup. If you taste it, it's real. Your palate is valid. Trust what you experience.</p>
+      </div>
+      <div class="expect-card">
+        <h3>No Experience Needed</h3>
+        <p>You don't need to be a coffee expert — just bring curiosity and an open mind. We'll walk you through every step. You'll get a tasting card to jot notes as you go. The only rule: have fun.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- THE FLIGHT -->
+<div class="flight">
+  <div class="container">
+    <div class="section-header">
+      <h2>The Flight</h2>
+      <p>A journey from coffee's ancient birthplace to the bleeding edge of modern coffee science.</p>
+      <div class="divider"></div>
+    </div>
+    <div class="flight-grid">
+      <div class="flight-item">
+        <div class="flight-num">01</div>
+        <div class="flight-info">
+          <h4>The Birthplace</h4>
+          <div class="origin">Ethiopia — Washed</div>
+          <div class="teaser">Where it all began. Floral, citrus, sparkling.</div>
+        </div>
+      </div>
+      <div class="flight-item">
+        <div class="flight-num">02</div>
+        <div class="flight-info">
+          <h4>The Ancient Trade Route <span class="highlight">Rare</span></h4>
+          <div class="origin">Yemen — Natural</div>
+          <div class="teaser">500 years of history in every sip. Wild, complex, unforgettable.</div>
+        </div>
+      </div>
+      <div class="flight-item">
+        <div class="flight-num">03</div>
+        <div class="flight-info">
+          <h4>The Bright Spark</h4>
+          <div class="origin">Kenya — Washed</div>
+          <div class="teaser">Electric acidity. Blackcurrant. A palate wake-up call.</div>
+        </div>
+      </div>
+      <div class="flight-item">
+        <div class="flight-num">04</div>
+        <div class="flight-info">
+          <h4>The Royalty <span class="highlight">Splurge</span></h4>
+          <div class="origin">Panama / Colombia — Gesha Variety</div>
+          <div class="teaser">The most celebrated variety alive. Peach blossom and jasmine.</div>
+        </div>
+      </div>
+      <div class="flight-item">
+        <div class="flight-num">05</div>
+        <div class="flight-info">
+          <h4>The Alchemist</h4>
+          <div class="origin">Colombia — Carbonic Maceration</div>
+          <div class="teaser">"Wait... this is coffee?" Winemaking meets coffee science.</div>
+        </div>
+      </div>
+      <div class="flight-item">
+        <div class="flight-num">06</div>
+        <div class="flight-info">
+          <h4>The Fruit Bomb</h4>
+          <div class="origin">Ethiopia — Natural Process</div>
+          <div class="teaser">Blueberry jam, strawberry, dark chocolate. Pure fruit explosion.</div>
+        </div>
+      </div>
+      <div class="flight-item">
+        <div class="flight-num">07</div>
+        <div class="flight-info">
+          <h4>The Wild Card <span class="highlight">Rare</span></h4>
+          <div class="origin">Rare Variety</div>
+          <div class="teaser">A variety most people have never encountered. Prepare to be surprised.</div>
+        </div>
+      </div>
+      <div class="flight-item">
+        <div class="flight-num">08</div>
+        <div class="flight-info">
+          <h4>The Grand Finale <span class="highlight">Splurge</span></h4>
+          <div class="origin">Gesha — The Crown Jewel</div>
+          <div class="teaser">The showstopper. The perfect last sip. A coffee that tastes like a celebration.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- TIMELINE -->
+<div class="timeline-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>The Flow</h2>
+      <p>Here's how the afternoon will unfold.</p>
+      <div class="divider"></div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-time">10:00 AM</div>
+      <div class="timeline-desc">
+        <h4>Arrive & Settle In</h4>
+        <p>Grab your tasting card and a seat. We'll walk you through how cupping works.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-time">10:15 AM</div>
+      <div class="timeline-desc">
+        <h4>Round 1 — Coffees 1–4</h4>
+        <p>The classics: Ethiopia, Yemen, Kenya, and the famous Gesha variety. Smell the dry grounds, watch the pour, break the crust, and taste.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-time">11:00 AM</div>
+      <div class="timeline-desc">
+        <h4>Palate Reset</h4>
+        <p>Water, crackers, and conversation. Compare notes on the first flight before diving into the wild stuff.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-time">11:20 AM</div>
+      <div class="timeline-desc">
+        <h4>Round 2 — Coffees 5–8</h4>
+        <p>The experimental flight: carbonic maceration, natural process fruit bombs, a rare variety wild card, and the grand finale.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-time">12:00 PM</div>
+      <div class="timeline-desc">
+        <h4>The Big Reveal</h4>
+        <p>Vote on your favorites. Then we reveal the names, origins, stories, and prices behind each coffee. This is the best part.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-time">12:30–2 PM</div>
+      <div class="timeline-desc">
+        <h4>Hang & Celebrate</h4>
+        <p>Full pots of the crowd favorites, food, and a proper birthday celebration.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- GOOD TO KNOW -->
+<div class="know">
+  <div class="container">
+    <div class="section-header">
+      <h2>Good to Know</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="know-grid">
+      <div class="know-item">
+        <div class="know-icon">&#9749;</div>
+        <h4>Come Hungry</h4>
+        <p>There will be food and snacks alongside the cupping. Don't skip breakfast though — you'll want a baseline palate.</p>
+      </div>
+      <div class="know-item">
+        <div class="know-icon">&#128131;</div>
+        <h4>Skip the Fragrance</h4>
+        <p>Please avoid wearing strong cologne or perfume — it interferes with the aromas. Your nose is the star today.</p>
+      </div>
+      <div class="know-item">
+        <div class="know-icon">&#127881;</div>
+        <h4>It's a Party</h4>
+        <p>This isn't a stuffy tasting. It's a birthday. Dress casual, bring good energy, and get ready to slurp loudly.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- QUOTE -->
+<div style="text-align:center; padding:60px 30px; background:var(--warm-white);">
+  <div style="max-width:600px; margin:0 auto; border-top:1px solid rgba(212,165,116,0.3); border-bottom:1px solid rgba(212,165,116,0.3); padding:40px 20px;">
+    <p style="font-family:'Playfair Display',serif; font-size:1.8rem; font-style:italic; color:var(--espresso); line-height:1.4; margin:0;">
+      "Life is too short for bad coffee<br>— especially at 40."
+    </p>
+  </div>
+</div>
+<!-- RSVP -->
+<div class="rsvp">
+  <h2>Can You Make It?</h2>
+  <p>Let JT know by March 10th so we can have enough coffee (and spoons) for everyone.</p>
+  <a href="sms:&body=I'm%20in%20for%20the%2040th%20coffee%20cupping!" class="rsvp-btn">RSVP to JT</a>
+</div>
+<!-- FOOTER -->
+<div class="footer">
+  <p>JT's 40th — March 14, 2026</p>
+</div>
+</body>
+</html>
