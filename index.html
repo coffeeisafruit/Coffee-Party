@@ -304,27 +304,29 @@
   .hero-rsvp-pill {
     display: block;
     width: fit-content;
-    margin: 32px auto 0;
+    margin: 36px auto 0;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 0.65rem;
+    font-size: 0.75rem;
     letter-spacing: 2.5px;
     text-transform: uppercase;
-    color: var(--crema);
-    border: 1px solid rgba(212,165,116,0.35);
-    padding: 10px 28px;
-    border-radius: 24px;
+    color: var(--espresso);
+    background: var(--crema);
+    padding: 14px 36px;
+    border-radius: 30px;
     text-decoration: none;
     transition: all 0.3s ease;
-    animation: gentle-float 3s ease-in-out infinite;
+    animation: gentle-pulse 2.5s ease-in-out infinite;
+    box-shadow: 0 0 20px rgba(212,165,116,0.3);
   }
   .hero-rsvp-pill:hover {
-    background: rgba(212,165,116,0.15);
-    border-color: var(--crema);
+    background: #c49a64;
+    box-shadow: 0 0 30px rgba(212,165,116,0.5);
     animation-play-state: paused;
+    transform: scale(1.05);
   }
-  @keyframes gentle-float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-4px); }
+  @keyframes gentle-pulse {
+    0%, 100% { box-shadow: 0 0 20px rgba(212,165,116,0.3); }
+    50% { box-shadow: 0 0 30px rgba(212,165,116,0.5); }
   }
   /* FOOTER */
   .footer {
