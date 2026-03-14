@@ -130,6 +130,280 @@
     background: var(--crema);
     margin: 16px auto 0;
   }
+  /* TABS */
+  .tabs {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 36px;
+  }
+  .tab-btn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 10px 24px;
+    border: 1px solid rgba(212,165,116,0.3);
+    border-radius: 30px;
+    background: transparent;
+    color: var(--espresso);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .tab-btn:hover {
+    background: rgba(212,165,116,0.15);
+  }
+  .tab-btn.active {
+    background: var(--crema);
+    color: var(--espresso);
+    border-color: var(--crema);
+    font-weight: 500;
+  }
+  .tab-content {
+    display: none;
+  }
+  .tab-content.active {
+    display: block;
+  }
+  /* TASTING CARD */
+  .tasting-card-grid {
+    display: grid;
+    gap: 16px;
+  }
+  .tasting-cup {
+    background: white;
+    border-radius: 12px;
+    padding: 24px 28px;
+    border: 1px solid rgba(212,165,116,0.2);
+  }
+  .tasting-cup-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(212,165,116,0.15);
+  }
+  .tasting-cup-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--crema);
+    line-height: 1;
+  }
+  .tasting-cup-header h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+  }
+  .tasting-cup-header .round-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--sage);
+  }
+  .tasting-prompts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .tasting-prompt {
+    padding: 10px 14px;
+    background: var(--parchment);
+    border-radius: 8px;
+  }
+  .tasting-prompt-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--crema);
+    margin-bottom: 4px;
+  }
+  .tasting-prompt-hint {
+    font-size: 0.7rem;
+    color: #9a8b7f;
+    font-style: italic;
+    margin-bottom: 6px;
+  }
+  .tasting-input {
+    width: 100%;
+    border: none;
+    background: white;
+    border-radius: 6px;
+    padding: 8px 10px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    color: var(--espresso);
+    resize: none;
+    outline: none;
+    border: 1px solid rgba(212,165,116,0.15);
+    transition: border-color 0.2s ease;
+  }
+  .tasting-input:focus {
+    border-color: var(--crema);
+  }
+  .tasting-input::placeholder {
+    color: #c4b5a6;
+    font-style: italic;
+  }
+  .tasting-rating {
+    margin-top: 14px;
+    text-align: center;
+  }
+  .tasting-rating-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--crema);
+    margin-bottom: 6px;
+  }
+  .star-rating {
+    display: inline-flex;
+    gap: 4px;
+  }
+  .star-rating button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: rgba(212,165,116,0.3);
+    transition: color 0.15s ease, transform 0.15s ease;
+    padding: 0 2px;
+    line-height: 1;
+  }
+  .star-rating button:hover,
+  .star-rating button.active {
+    color: var(--crema);
+  }
+  .star-rating button:hover {
+    transform: scale(1.15);
+  }
+  .saved-notice {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 1px;
+    color: var(--sage);
+    text-align: center;
+    margin-top: 8px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .saved-notice.show {
+    opacity: 1;
+  }
+  .fav-btn {
+    display: block;
+    width: 100%;
+    margin-top: 12px;
+    padding: 10px;
+    border: 1.5px solid rgba(212,165,116,0.3);
+    border-radius: 10px;
+    background: transparent;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #8a7b6e;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+  .fav-btn:hover {
+    border-color: var(--crema);
+    background: rgba(212,165,116,0.08);
+  }
+  .fav-btn.selected {
+    background: var(--crema);
+    border-color: var(--crema);
+    color: var(--espresso);
+    font-weight: 500;
+  }
+  .tasting-cup.is-favorite {
+    border-color: var(--crema);
+    box-shadow: 0 0 16px rgba(212,165,116,0.2);
+  }
+  /* CUPPING 101 */
+  .cupping-video {
+    max-width: 560px;
+    margin: 0 auto 36px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(212,165,116,0.2);
+    box-shadow: 0 4px 20px rgba(44,24,16,0.08);
+  }
+  .cupping-video iframe {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+  }
+  .cupping-steps {
+    display: grid;
+    gap: 20px;
+  }
+  .cupping-step {
+    background: white;
+    border-radius: 12px;
+    padding: 28px;
+    border: 1px solid rgba(212,165,116,0.2);
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 20px;
+    align-items: start;
+  }
+  .step-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--crema);
+    line-height: 1;
+    padding-top: 4px;
+  }
+  .cupping-step h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--espresso);
+  }
+  .cupping-step p {
+    font-size: 0.88rem;
+    color: #5a4a3f;
+    line-height: 1.7;
+  }
+  .cupping-intro {
+    text-align: center;
+    max-width: 560px;
+    margin: 0 auto 32px;
+    font-size: 0.92rem;
+    color: #5a4a3f;
+    line-height: 1.8;
+  }
+  .cupping-vocab {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 28px;
+  }
+  .vocab-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px 24px;
+    border: 1px solid rgba(212,165,116,0.15);
+  }
+  .vocab-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    margin-bottom: 4px;
+    color: var(--espresso);
+  }
+  .vocab-card p {
+    font-size: 0.82rem;
+    color: #7a6b5f;
+    line-height: 1.6;
+  }
   /* WHAT TO EXPECT */
   .expect {
     background: var(--parchment);
@@ -356,10 +630,44 @@
   @media (max-width: 700px) {
     .hero h1 { font-size: 2.4rem; }
     .hero { padding: 60px 24px; }
-    .details-bar { gap: 24px; }
-    .expect-grid, .flight-grid { grid-template-columns: 1fr; }
+    .details-bar { gap: 18px; padding: 14px 20px; }
+    .detail-value { font-size: 0.92rem; }
+    .container { padding: 0 18px; }
+    .section-header { padding: 40px 0 28px; }
+    .section-header h2 { font-size: 1.6rem; }
+    .expect-grid, .flight-grid, .cupping-vocab { grid-template-columns: 1fr; }
     .know-grid { grid-template-columns: 1fr; }
     .timeline-item { grid-template-columns: 80px 1fr; gap: 16px; }
+    /* Tabs */
+    .tabs { flex-wrap: wrap; gap: 6px; }
+    .tab-btn { font-size: 0.6rem; padding: 8px 16px; letter-spacing: 1.5px; }
+    /* Cupping 101 steps */
+    .cupping-step { grid-template-columns: 36px 1fr; gap: 14px; padding: 20px; }
+    .step-number { font-size: 1.2rem; }
+    .cupping-intro { font-size: 0.85rem; }
+    /* Flight items */
+    .flight-item { padding: 18px 20px; gap: 14px; }
+    .flight-num { font-size: 1.3rem; }
+    .flight-info h4 { font-size: 0.95rem; }
+    /* Tasting card */
+    .tasting-prompts { grid-template-columns: 1fr; }
+    .tasting-cup { padding: 18px 20px; }
+    .tasting-cup-num { font-size: 1.3rem; }
+    .tasting-input { font-size: 16px; } /* prevents iOS zoom on focus */
+    .fav-btn { font-size: 0.6rem; padding: 12px; }
+    /* Video */
+    .cupping-video { margin: 0 auto 28px; }
+    /* Know section */
+    .know-item { padding: 20px 16px; }
+    /* RSVP */
+    .rsvp { padding: 40px 24px; }
+    .rsvp h2 { font-size: 1.5rem; }
+    .rsvp-btn { padding: 12px 28px; font-size: 0.7rem; margin-bottom: 8px; }
+    .rsvp-btn + span { display: block; margin: 8px 0; }
+    /* Vocab */
+    .vocab-card { padding: 16px 18px; }
+    /* Hero RSVP pill */
+    .hero-rsvp-pill { font-size: 0.65rem; padding: 12px 28px; }
   }
 </style>
 </head>
@@ -387,30 +695,173 @@
     <a href="#rsvp-section" class="hero-rsvp-pill">RSVP ↓</a>
   </div>
 </div>
-<!-- WHAT TO EXPECT -->
+<!-- WHAT TO EXPECT / CUPPING 101 -->
 <div class="expect">
   <div class="container">
     <div class="section-header">
-      <h2>What to Expect</h2>
+      <h2>The Experience</h2>
       <p>Coffee cupping is the professional method for tasting and evaluating coffee — and on March 14th, you're the judges.</p>
       <div class="divider"></div>
     </div>
-    <div class="expect-grid">
-      <div class="expect-card">
-        <h3>How It Works</h3>
-        <p>You'll taste 8 coffees side by side, each brewed the same simple way: freshly ground coffee steeped directly in hot water. No filters, no gadgets — just coffee, water, and a spoon. This strips away all variables and lets the coffee speak for itself.</p>
+    <div class="tabs">
+      <button class="tab-btn active" onclick="switchTab('expect')">What to Expect</button>
+      <button class="tab-btn" onclick="switchTab('cupping101')">Coffee Cupping 101</button>
+      <button class="tab-btn" onclick="switchTab('tastingcard')">Tasting Card</button>
+    </div>
+    <!-- TAB 1: What to Expect -->
+    <div id="tab-expect" class="tab-content active">
+      <div class="expect-grid">
+        <div class="expect-card">
+          <h3>How It Works</h3>
+          <p>You'll taste 8 coffees side by side, each brewed the same simple way: freshly ground coffee steeped directly in hot water. No filters, no gadgets — just coffee, water, and a spoon. This strips away all variables and lets the coffee speak for itself.</p>
+        </div>
+        <div class="expect-card">
+          <h3>How to Taste</h3>
+          <p><strong>Smell first</strong> — both the dry grounds and after water is added. <strong>Slurp loudly</strong> — seriously, the louder the better. Slurping aerates the coffee across your whole palate. <strong>Think about</strong> what fruits, flavors, or textures come to mind. There are no wrong answers.</p>
+        </div>
+        <div class="expect-card">
+          <h3>The Flavor Wheel</h3>
+          <p>Coffee can taste like blueberries, jasmine, brown sugar, red wine, peaches, dark chocolate, or even tomato soup. If you taste it, it's real. Your palate is valid. Trust what you experience.</p>
+        </div>
+        <div class="expect-card">
+          <h3>No Experience Needed</h3>
+          <p>You don't need to be a coffee expert — just bring curiosity and an open mind. We'll walk you through every step. You'll get a tasting card to jot notes as you go. The only rule: have fun.</p>
+        </div>
       </div>
-      <div class="expect-card">
-        <h3>How to Taste</h3>
-        <p><strong>Smell first</strong> — both the dry grounds and after water is added. <strong>Slurp loudly</strong> — seriously, the louder the better. Slurping aerates the coffee across your whole palate. <strong>Think about</strong> what fruits, flavors, or textures come to mind. There are no wrong answers.</p>
+    </div>
+    <!-- TAB 2: Coffee Cupping 101 -->
+    <div id="tab-cupping101" class="tab-content">
+      <p class="cupping-intro">
+        Cupping is how coffee professionals taste and score coffees around the world. Every coffee is brewed the exact same way — same dose, same water, same time — so the only variable is the coffee itself. Here's a quick look at what it's all about, followed by exactly what we'll do together.
+      </p>
+      <div class="cupping-video">
+        <iframe src="https://www.youtube.com/embed/lqs5w7AhZvo" title="Coffee Cupping Overview" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
       </div>
-      <div class="expect-card">
-        <h3>The Flavor Wheel</h3>
-        <p>Coffee can taste like blueberries, jasmine, brown sugar, red wine, peaches, dark chocolate, or even tomato soup. If you taste it, it's real. Your palate is valid. Trust what you experience.</p>
+
+      <!-- ROUND 1: GUIDED -->
+      <div class="section-header" style="padding: 36px 0 24px;">
+        <h2 style="font-size: 1.4rem;">Round 1 — The Guided Tasting</h2>
+        <p>We'll walk through the first 2 coffees together, step by step. Just follow along — no experience needed.</p>
+        <div class="divider"></div>
       </div>
-      <div class="expect-card">
-        <h3>No Experience Needed</h3>
-        <p>You don't need to be a coffee expert — just bring curiosity and an open mind. We'll walk you through every step. You'll get a tasting card to jot notes as you go. The only rule: have fun.</p>
+      <div class="cupping-steps">
+        <div class="cupping-step">
+          <div class="step-number">01</div>
+          <div>
+            <h4>Look at the Table</h4>
+            <p>You'll see rows of identical cups, each filled with coarsely ground coffee. Every cup has the same amount, ground the same way. There's a reason for this — when everything else is equal, the only thing you're comparing is the coffee itself. You'll also have a spoon and a rinse cup.</p>
+          </div>
+        </div>
+        <div class="cupping-step">
+          <div class="step-number">02</div>
+          <div>
+            <h4>Smell the Dry Grounds</h4>
+            <p>Before any water is added, lean in and smell each cup. This is the <strong>dry fragrance</strong> — you're catching the most volatile aromatics before they disappear. Does it smell like chocolate? Fruit? Toast? Flowers? There's no wrong answer. Just notice what comes to mind and jot it on your tasting card.</p>
+          </div>
+        </div>
+        <div class="cupping-step">
+          <div class="step-number">03</div>
+          <div>
+            <h4>Watch the Pour</h4>
+            <p>Hot water (about 200°F) is poured directly onto the grounds. You'll see the coffee bloom and a thick crust of grounds form on the surface, trapping all those aromatics underneath like a lid. Now we wait four minutes. Use this time to observe — the crust will shift and bubble slightly as gases release.</p>
+          </div>
+        </div>
+        <div class="cupping-step">
+          <div class="step-number">04</div>
+          <div>
+            <h4>Break the Crust</h4>
+            <p>This is the best moment. Take your spoon and push through the floating crust with three gentle strokes. <strong>Get your nose right over the cup as you do this</strong> — a burst of aroma releases that's often completely different from the dry fragrance. This is the <strong>wet aroma</strong>. After breaking, skim off the remaining grounds floating on top.</p>
+          </div>
+        </div>
+        <div class="cupping-step">
+          <div class="step-number">05</div>
+          <div>
+            <h4>Slurp — Loudly</h4>
+            <p>Scoop a spoonful and <strong>slurp it as loudly as you can</strong>. Yes, really. This isn't polite tea sipping — slurping sprays the coffee across your entire palate and sends aromatics up through your nasal passage. Professionals sound absolutely ridiculous doing this. You will too. That's the point. Rinse your spoon between cups.</p>
+          </div>
+        </div>
+        <div class="cupping-step">
+          <div class="step-number">06</div>
+          <div>
+            <h4>Notice What You Notice</h4>
+            <p>As the coffee hits your palate, pay attention to a few things: <strong>Is it bright and zingy, or smooth and mellow?</strong> That's acidity. <strong>Does it feel light like tea or thick like cream?</strong> That's body. <strong>What flavors come to mind?</strong> Fruit, chocolate, nuts, flowers — anything goes. And <strong>what happens after you swallow?</strong> Does the flavor linger or vanish? Write it all down. Trust your palate.</p>
+          </div>
+        </div>
+        <div class="cupping-step">
+          <div class="step-number">07</div>
+          <div>
+            <h4>Go Back as It Cools</h4>
+            <p>Here's a secret: coffee changes dramatically as it cools. A cup that seems quiet when hot can open up into something incredible at room temperature. Go back to each cup every few minutes. The best coffees keep revealing new layers. This is why we don't rush.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ROUND 2: BLIND -->
+      <div class="section-header" style="padding: 48px 0 24px;">
+        <h2 style="font-size: 1.4rem;">Round 2 — The Blind Tasting</h2>
+        <p>Now you know the ritual. For the next 4 coffees, you're on your own.</p>
+        <div class="divider"></div>
+      </div>
+      <div class="cupping-steps">
+        <div class="cupping-step">
+          <div class="step-number">&#9733;</div>
+          <div>
+            <h4>You've Got This</h4>
+            <p>Four new cups are set up — but this time, you won't know what they are. No names, no origins, no hints. Smell, break, slurp, and evaluate at your own pace. Use your tasting card to score each one. Compare cups. Go back to favorites. Discuss with the people around you. This is where your own palate takes the lead.</p>
+          </div>
+        </div>
+        <div class="cupping-step">
+          <div class="step-number">&#9733;</div>
+          <div>
+            <h4>Vote on Your Favorites</h4>
+            <p>Once everyone has tasted all four, you'll vote on your top picks. Which one stood out? Which surprised you? Which would you want to drink every morning? Then comes the best part — <strong>the big reveal</strong>. We'll uncover the name, origin, processing method, and price of each coffee. Prepare to be surprised.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vocabulary -->
+      <div class="section-header" style="padding: 48px 0 24px;">
+        <h2 style="font-size: 1.4rem;">Words You Might Hear</h2>
+        <p>A quick cheat sheet so nothing catches you off guard.</p>
+        <div class="divider"></div>
+      </div>
+      <div class="cupping-vocab">
+        <div class="vocab-card">
+          <h4>Acidity</h4>
+          <p>Not sour — think bright, sparkly, lively. Like the zing of a green apple or citrus. It's a good thing in coffee.</p>
+        </div>
+        <div class="vocab-card">
+          <h4>Body</h4>
+          <p>How the coffee feels in your mouth. Light and tea-like? Syrupy and heavy? It's all about texture, and there's no wrong answer.</p>
+        </div>
+        <div class="vocab-card">
+          <h4>Natural Process</h4>
+          <p>The coffee cherry dries around the bean before removal, infusing it with fruity, wine-like flavors. Think blueberry, strawberry, tropical fruit.</p>
+        </div>
+        <div class="vocab-card">
+          <h4>Washed Process</h4>
+          <p>The fruit is removed before drying, producing a cleaner, brighter cup that lets the bean's terroir shine through.</p>
+        </div>
+        <div class="vocab-card">
+          <h4>Co-Ferment</h4>
+          <p>Coffee fermented alongside fruits or other ingredients. The coffee absorbs those flavors during fermentation — it's intentional, not artificial.</p>
+        </div>
+        <div class="vocab-card">
+          <h4>Anaerobic</h4>
+          <p>Fermented in a sealed, oxygen-free environment. Creates funky, complex, sometimes boozy flavors you won't find in conventional coffee.</p>
+        </div>
+      </div>
+    </div>
+    <!-- TAB 3: Tasting Card -->
+    <div id="tab-tastingcard" class="tab-content">
+      <p class="cupping-intro">
+        Your personal tasting card. Type your notes and tap to rate — everything saves automatically to your phone. No account needed.
+      </p>
+      <div class="tasting-card-grid" id="tasting-cards"></div>
+      <!-- Vote reminder -->
+      <div style="text-align:center; margin-top:32px; padding:24px; background:white; border-radius:12px; border:1px solid rgba(212,165,116,0.2);">
+        <div style="font-family:'Playfair Display',serif; font-size:1.2rem; font-weight:600; margin-bottom:6px;">Which was your favorite?</div>
+        <div style="font-size:0.85rem; color:#7a6b5f;">Remember your top pick — we'll vote before the big reveal.</div>
       </div>
     </div>
   </div>
@@ -420,72 +871,66 @@
   <div class="container">
     <div class="section-header">
       <h2>The Flight</h2>
-      <p>Eight handpicked coffees — from crowd-pleasing classics to bleeding-edge co-ferments. Curated by Evan Piepenbrink of An(other) Coffee Co.</p>
+      <p>Six coffees — two guided, four blind. From a clean Peruvian washed to a cosmic peach co-ferment. Here's what you'll be tasting.</p>
       <div class="divider"></div>
     </div>
-    <div class="flight-grid">
+    <!-- GUIDED ROUND -->
+    <div style="margin-bottom: 12px;">
+      <div style="font-family:'JetBrains Mono',monospace; font-size:0.6rem; letter-spacing:2.5px; text-transform:uppercase; color:var(--sage); margin-bottom:16px; text-align:center;">Round 1 — Guided</div>
+    </div>
+    <div class="flight-grid" style="margin-bottom: 32px;">
       <div class="flight-item">
         <div class="flight-num">01</div>
         <div class="flight-info">
-          <h4>The Insider Pick</h4>
-          <div class="origin">Colombia — Yeast-Inoculated Semi-Washed</div>
-          <div class="teaser">Evan's own roastery. Floral, funky, and made with love.</div>
+          <h4>The Warm Handshake</h4>
+          <div class="origin">Color Coffee — Peru, Washed</div>
+          <div class="teaser">Amaretto and brown sugar. Clean, sweet, and approachable — the perfect coffee to learn the cupping ritual with.</div>
         </div>
       </div>
       <div class="flight-item">
         <div class="flight-num">02</div>
         <div class="flight-info">
-          <h4>The Crowd Pleaser</h4>
-          <div class="origin">Peru — Washed</div>
-          <div class="teaser">Clean, sweet, and universally lovable. The coffee equivalent of a warm handshake.</div>
+          <h4>The Wild Card</h4>
+          <div class="origin">Hydrangea — Ethiopia, Anaerobic Natural</div>
+          <div class="teaser">Cantaloupe, passionfruit, blueberry. A completely different world from the Peru — and that's exactly the point.</div>
         </div>
       </div>
+    </div>
+    <!-- BLIND ROUND -->
+    <div style="margin-bottom: 12px;">
+      <div style="font-family:'JetBrains Mono',monospace; font-size:0.6rem; letter-spacing:2.5px; text-transform:uppercase; color:var(--sage); margin-bottom:16px; text-align:center;">Round 2 — Blind</div>
+    </div>
+    <div class="flight-grid">
       <div class="flight-item">
         <div class="flight-num">03</div>
         <div class="flight-info">
-          <h4>The Bright Spark</h4>
-          <div class="origin">Kenya — Washed</div>
-          <div class="teaser">Electric acidity. Berry-forward. A palate wake-up call from the Mara Estate.</div>
+          <h4>The Next Generation</h4>
+          <div class="origin">An(other) Coffee Co. — Colombia, Yeast-Inoculated Semi-Washed</div>
+          <div class="teaser">Fresh florals, hops, and clementine. A collaboration with young Colombian producers rewriting the rules of specialty coffee.</div>
         </div>
       </div>
       <div class="flight-item">
         <div class="flight-num">04</div>
         <div class="flight-info">
-          <h4>The Purist's Pick</h4>
-          <div class="origin">Honduras — Pacas Variety</div>
-          <div class="teaser">A top-tier producer, a heritage variety, and a roaster who loves what he does. No gimmicks needed.</div>
+          <h4>The Cosmic One</h4>
+          <div class="origin">Brandywine Coffee Roasters — Co-Fermented Blend</div>
+          <div class="teaser">Peach, brown sugar, peach sweet tea. A year in the making, co-fermented at origin. Coffee science meets cosmic ambition.</div>
         </div>
       </div>
       <div class="flight-item">
         <div class="flight-num">05</div>
         <div class="flight-info">
-          <h4>The It Girl</h4>
-          <div class="origin">Ethiopia — Anaerobic Natural</div>
-          <div class="teaser">From the hottest roaster on the West Coast right now. Juicy, wild, and impossible to ignore.</div>
+          <h4>The Bright Spark</h4>
+          <div class="origin">Valor Coffee — Kenya, Mara Estate</div>
+          <div class="teaser">Caramel, sumo citrus, creme de cassis. Electric acidity from one of the most exciting Kenyan estates in the game.</div>
         </div>
       </div>
       <div class="flight-item">
         <div class="flight-num">06</div>
         <div class="flight-info">
-          <h4>The Candy Shop</h4>
-          <div class="origin">Colombia — Strawberry Co-Ferment</div>
-          <div class="teaser">Fermented with dried strawberries for five days. Candy, white chocolate, and a flavor that will make you say "wait... this is COFFEE?"</div>
-        </div>
-      </div>
-      <div class="flight-item">
-        <div class="flight-num">07</div>
-        <div class="flight-info">
-          <h4>The Alchemist</h4>
-          <div class="origin">Colombia — Araza Osmotic Dehydration</div>
-          <div class="teaser">Coffee science at its wildest. A Colombian-native fruit, a glucose solution, and osmosis do the work.</div>
-        </div>
-      </div>
-      <div class="flight-item">
-        <div class="flight-num">08</div>
-        <div class="flight-info">
-          <h4>The Grand Finale</h4>
-          <div class="origin">Peach Co-Ferment Blend</div>
-          <div class="teaser">The showstopper. A peach co-ferment from one of the wildest roasters in the game. The perfect last sip.</div>
+          <h4>The Sleeper Hit</h4>
+          <div class="origin">GFN Coffee — Kenya, Nyeri, Washed</div>
+          <div class="teaser">Muthuthini AA. A washed Kenyan from Nyeri — clean, complex, and a fascinating comparison to the Mara Estate next to it.</div>
         </div>
       </div>
     </div>
@@ -509,22 +954,22 @@
     <div class="timeline-item">
       <div class="timeline-time">10:15 AM</div>
       <div class="timeline-desc">
-        <h4>Round 1 — Coffees 1–4</h4>
-        <p>The classics: Ethiopia, Yemen, Kenya, and the famous Gesha variety. Smell the dry grounds, watch the pour, break the crust, and taste.</p>
+        <h4>Round 1 — Guided Tasting</h4>
+        <p>We'll cup 2 coffees together, step by step. Smell the dry grounds, watch the pour, break the crust, slurp, and evaluate. You'll have the hang of it by the end.</p>
       </div>
     </div>
     <div class="timeline-item">
       <div class="timeline-time">11:00 AM</div>
       <div class="timeline-desc">
         <h4>Palate Reset</h4>
-        <p>Water, crackers, and conversation. Compare notes on the first flight before diving into the wild stuff.</p>
+        <p>Water, crackers, and conversation. Compare notes on the first two coffees before the blind round.</p>
       </div>
     </div>
     <div class="timeline-item">
       <div class="timeline-time">11:20 AM</div>
       <div class="timeline-desc">
-        <h4>Round 2 — Coffees 5–8</h4>
-        <p>The experimental flight: carbonic maceration, natural process fruit bombs, a rare variety wild card, and the grand finale.</p>
+        <h4>Round 2 — Blind Tasting</h4>
+        <p>Four mystery coffees. No names, no hints. Smell, break, slurp, and score at your own pace. This is where your palate takes the lead.</p>
       </div>
     </div>
     <div class="timeline-item">
@@ -589,5 +1034,163 @@
 <div class="footer">
   <p>Joe's 40th — March 14, 2026</p>
 </div>
+<script>
+function switchTab(tab) {
+  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+  document.getElementById('tab-' + tab).classList.add('active');
+  event.currentTarget.classList.add('active');
+}
+
+(function() {
+  var cups = [
+    { num: '01', name: 'Cup One', round: 'Guided Round' },
+    { num: '02', name: 'Cup Two', round: 'Guided Round' },
+    { num: '03', name: 'Cup Three', round: 'Blind Round' },
+    { num: '04', name: 'Cup Four', round: 'Blind Round' },
+    { num: '05', name: 'Cup Five', round: 'Blind Round' },
+    { num: '06', name: 'Cup Six', round: 'Blind Round' }
+  ];
+
+  var fields = [
+    { key: 'aroma', label: 'Aroma', hint: 'What do you smell?', placeholder: 'e.g. floral, fruity, chocolatey...' },
+    { key: 'acidity', label: 'Acidity', hint: 'Bright or smooth?', placeholder: 'e.g. zingy, mellow, citrusy...' },
+    { key: 'body', label: 'Body', hint: 'Light or heavy?', placeholder: 'e.g. tea-like, syrupy, creamy...' },
+    { key: 'flavor', label: 'Flavor', hint: 'What does it taste like?', placeholder: 'e.g. blueberry, caramel, nutty...' }
+  ];
+
+  var KEY = 'joe40-tasting-';
+
+  function load(cup, field) {
+    try { return localStorage.getItem(KEY + cup + '-' + field) || ''; } catch(e) { return ''; }
+  }
+  function save(cup, field, value) {
+    try { localStorage.setItem(KEY + cup + '-' + field, value); } catch(e) {}
+    showSaved(cup);
+  }
+  function showSaved(cup) {
+    var el = document.getElementById('saved-' + cup);
+    if (!el) return;
+    el.classList.add('show');
+    clearTimeout(el._t);
+    el._t = setTimeout(function() { el.classList.remove('show'); }, 1500);
+  }
+
+  function el(tag, cls, text) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text) e.textContent = text;
+    return e;
+  }
+
+  var container = document.getElementById('tasting-cards');
+  if (!container) return;
+
+  cups.forEach(function(cup) {
+    var card = el('div', 'tasting-cup');
+
+    // Header
+    var header = el('div', 'tasting-cup-header');
+    header.appendChild(el('div', 'tasting-cup-num', cup.num));
+    var info = el('div');
+    info.appendChild(el('h4', null, cup.name));
+    info.appendChild(el('div', 'round-label', cup.round));
+    header.appendChild(info);
+    card.appendChild(header);
+
+    // Prompts
+    var prompts = el('div', 'tasting-prompts');
+    fields.forEach(function(f) {
+      var prompt = el('div', 'tasting-prompt');
+      prompt.appendChild(el('div', 'tasting-prompt-label', f.label));
+      prompt.appendChild(el('div', 'tasting-prompt-hint', f.hint));
+      var textarea = el('textarea', 'tasting-input');
+      textarea.rows = 2;
+      textarea.placeholder = f.placeholder;
+      textarea.dataset.cup = cup.num;
+      textarea.dataset.field = f.key;
+      textarea.value = load(cup.num, f.key);
+      prompt.appendChild(textarea);
+      prompts.appendChild(prompt);
+    });
+    card.appendChild(prompts);
+
+    // Star rating
+    var ratingWrap = el('div', 'tasting-rating');
+    ratingWrap.appendChild(el('div', 'tasting-rating-label', 'Your Rating'));
+    var starDiv = el('div', 'star-rating');
+    starDiv.dataset.cup = cup.num;
+    var savedRating = parseInt(load(cup.num, 'rating')) || 0;
+    for (var i = 1; i <= 5; i++) {
+      var btn = el('button', i <= savedRating ? 'active' : '');
+      btn.dataset.star = i;
+      btn.textContent = i <= savedRating ? '\u2605' : '\u2606';
+      starDiv.appendChild(btn);
+    }
+    ratingWrap.appendChild(starDiv);
+    card.appendChild(ratingWrap);
+
+    // Favorite button
+    var favBtn = el('button', 'fav-btn');
+    favBtn.dataset.cup = cup.num;
+    var currentFav = load('fav', 'pick');
+    if (currentFav === cup.num) {
+      favBtn.classList.add('selected');
+      favBtn.textContent = '\u2605 My Favorite';
+      card.classList.add('is-favorite');
+    } else {
+      favBtn.textContent = 'This is my favorite';
+    }
+    card.appendChild(favBtn);
+
+    // Saved notice
+    var notice = el('div', 'saved-notice', 'Saved');
+    notice.id = 'saved-' + cup.num;
+    card.appendChild(notice);
+
+    container.appendChild(card);
+  });
+
+  // Save on text input
+  container.addEventListener('input', function(e) {
+    if (e.target.classList.contains('tasting-input')) {
+      save(e.target.dataset.cup, e.target.dataset.field, e.target.value);
+    }
+  });
+
+  // Star click handler
+  container.addEventListener('click', function(e) {
+    var btn = e.target.closest('.star-rating button');
+    if (!btn) return;
+    var starDiv = btn.closest('.star-rating');
+    var cupNum = starDiv.dataset.cup;
+    var star = parseInt(btn.dataset.star);
+    save(cupNum, 'rating', star);
+    starDiv.querySelectorAll('button').forEach(function(b) {
+      var s = parseInt(b.dataset.star);
+      b.className = s <= star ? 'active' : '';
+      b.textContent = s <= star ? '\u2605' : '\u2606';
+    });
+  });
+
+  // Favorite click handler
+  container.addEventListener('click', function(e) {
+    var favBtn = e.target.closest('.fav-btn');
+    if (!favBtn) return;
+    var cupNum = favBtn.dataset.cup;
+    // Clear all favorites
+    container.querySelectorAll('.fav-btn').forEach(function(b) {
+      b.classList.remove('selected');
+      b.textContent = 'This is my favorite';
+      b.closest('.tasting-cup').classList.remove('is-favorite');
+    });
+    // Set this one
+    favBtn.classList.add('selected');
+    favBtn.textContent = '\u2605 My Favorite';
+    favBtn.closest('.tasting-cup').classList.add('is-favorite');
+    save('fav', 'pick', cupNum);
+  });
+})();
+</script>
 </body>
 </html>
