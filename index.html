@@ -324,6 +324,80 @@
     border-color: var(--crema);
     box-shadow: 0 0 16px rgba(212,165,116,0.2);
   }
+  /* FLAVOR WHEEL */
+  .wheel-container {
+    max-width: 500px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .wheel-container svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .wheel-container svg text {
+    font-family: 'Inter', sans-serif;
+    pointer-events: none;
+    user-select: none;
+  }
+  .wheel-slice {
+    cursor: pointer;
+    transition: opacity 0.2s ease, filter 0.2s ease;
+  }
+  .wheel-slice:hover {
+    opacity: 0.85;
+    filter: brightness(1.08);
+  }
+  .wheel-tooltip {
+    position: absolute;
+    background: var(--espresso);
+    color: var(--parchment);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    padding: 8px 14px;
+    border-radius: 8px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    white-space: nowrap;
+    z-index: 10;
+    transform: translate(-50%, -100%);
+    margin-top: -10px;
+  }
+  .wheel-tooltip.show { opacity: 1; }
+  .wheel-legend {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 28px;
+  }
+  .wheel-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid rgba(212,165,116,0.15);
+  }
+  .wheel-legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .wheel-legend-item h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--espresso);
+    line-height: 1.2;
+  }
+  .wheel-legend-item p {
+    font-size: 0.72rem;
+    color: #7a6b5f;
+    line-height: 1.4;
+  }
   /* CUPPING 101 */
   .cupping-video {
     max-width: 560px;
@@ -668,6 +742,9 @@
     .vocab-card { padding: 16px 18px; }
     /* Hero RSVP pill */
     .hero-rsvp-pill { font-size: 0.65rem; padding: 12px 28px; }
+    /* Flavor wheel */
+    .wheel-container { max-width: 340px; }
+    .wheel-legend { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -707,6 +784,7 @@
       <button class="tab-btn active" onclick="switchTab('expect')">What to Expect</button>
       <button class="tab-btn" onclick="switchTab('cupping101')">Coffee Cupping 101</button>
       <button class="tab-btn" onclick="switchTab('tastingcard')">Tasting Card</button>
+      <button class="tab-btn" onclick="switchTab('flavorwheel')">Flavor Wheel</button>
     </div>
     <!-- TAB 1: What to Expect -->
     <div id="tab-expect" class="tab-content active">
@@ -864,6 +942,17 @@
         <div style="font-size:0.85rem; color:#7a6b5f;">Remember your top pick — we'll vote before the big reveal.</div>
       </div>
     </div>
+    <!-- TAB 4: Flavor Wheel -->
+    <div id="tab-flavorwheel" class="tab-content">
+      <p class="cupping-intro">
+        Stuck on what you're tasting? Tap a section of the wheel to explore flavors. Start from the center and work outward to get more specific.
+      </p>
+      <div class="wheel-container">
+        <div class="wheel-tooltip" id="wheel-tip"></div>
+        <svg id="flavor-wheel" viewBox="0 0 500 500"></svg>
+      </div>
+      <div class="wheel-legend" id="wheel-legend"></div>
+    </div>
   </div>
 </div>
 <!-- THE FLIGHT -->
@@ -995,7 +1084,7 @@
       <h2>Good to Know</h2>
       <div class="divider"></div>
     </div>
-    <div class="know-grid">
+    <div class="know-grid" style="grid-template-columns: 1fr 1fr;">
       <div class="know-item">
         <div class="know-icon">&#9749;</div>
         <h4>Come Hungry</h4>
@@ -1010,6 +1099,48 @@
         <div class="know-icon">&#127881;</div>
         <h4>It's a Party</h4>
         <p>This isn't a stuffy tasting. It's a birthday. Dress casual, bring good energy, and get ready to slurp loudly.</p>
+      </div>
+      <div class="know-item">
+        <div class="know-icon">&#9881;</div>
+        <h4>The Grind & Dose</h4>
+        <p>Every cup is ground coarse — like rough sand — and dosed at exactly 8.3g per 150ml of water. Same ratio, same grind, every cup. The only variable is the coffee.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- THE WATER -->
+<div style="padding: 20px 0 60px; background: var(--warm-white);">
+  <div class="container">
+    <div class="section-header">
+      <h2>The Water</h2>
+      <p>Coffee is 98% water. So yeah — the water matters.</p>
+      <div class="divider"></div>
+    </div>
+    <div class="expect-grid" style="grid-template-columns: 1fr;">
+      <div class="expect-card" style="max-width: 600px; margin: 0 auto;">
+        <h3>Why We Built the Water From Scratch</h3>
+        <p>Tap water contains minerals that change how coffee extracts and tastes — too many and the coffee tastes flat, too few and it tastes hollow and sharp. For today's cupping, we started with <strong>distilled water</strong> (zero minerals) and added back exactly what coffee needs to taste its best.</p>
+        <div style="margin-top: 20px; padding: 20px; background: var(--parchment); border-radius: 10px;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:0.6rem; letter-spacing:2px; text-transform:uppercase; color:var(--crema); margin-bottom:12px;">Today's Water Recipe — 8 Gallons Distilled</div>
+          <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; text-align:center;">
+            <div>
+              <div style="font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:700; color:var(--espresso);">2.4g</div>
+              <div style="font-size:0.75rem; color:#5a4a3f; font-weight:500; margin-bottom:2px;">Epsom Salt</div>
+              <div style="font-size:0.68rem; color:#7a6b5f;">Magnesium — extracts fruity, complex flavors from the washed coffees</div>
+            </div>
+            <div>
+              <div style="font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:700; color:var(--espresso);">1.8g</div>
+              <div style="font-size:0.75rem; color:#5a4a3f; font-weight:500; margin-bottom:2px;">Calcium Chloride</div>
+              <div style="font-size:0.68rem; color:#7a6b5f;">Calcium — supports the body and sweetness in the co-ferments and naturals</div>
+            </div>
+            <div>
+              <div style="font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:700; color:var(--espresso);">1.0g</div>
+              <div style="font-size:0.75rem; color:#5a4a3f; font-weight:500; margin-bottom:2px;">Baking Soda</div>
+              <div style="font-size:0.68rem; color:#7a6b5f;">Buffer — light touch so the Kenyas and Ethiopia keep their brightness</div>
+            </div>
+          </div>
+        </div>
+        <p style="margin-top: 16px; font-size: 0.82rem; color: #7a6b5f; text-align: center; font-style: italic;">Every cup you taste today was brewed with the same water — so the only variable is the coffee.</p>
       </div>
     </div>
   </div>
@@ -1189,6 +1320,217 @@ function switchTab(tab) {
     favBtn.textContent = '\u2605 My Favorite';
     favBtn.closest('.tasting-cup').classList.add('is-favorite');
     save('fav', 'pick', cupNum);
+  });
+})();
+
+// Flavor Wheel
+(function() {
+  var categories = [
+    { name: 'Fruity', color: '#E8567F', subs: [
+      { name: 'Berry', examples: 'Blueberry, Strawberry, Raspberry, Blackberry' },
+      { name: 'Citrus', examples: 'Lemon, Orange, Grapefruit, Lime' },
+      { name: 'Stone Fruit', examples: 'Peach, Apricot, Plum, Cherry' },
+      { name: 'Tropical', examples: 'Mango, Pineapple, Passionfruit, Guava' }
+    ]},
+    { name: 'Sweet', color: '#D4A574', subs: [
+      { name: 'Chocolate', examples: 'Dark Chocolate, Milk Chocolate, Cocoa' },
+      { name: 'Caramel', examples: 'Caramel, Toffee, Butterscotch, Maple' },
+      { name: 'Sugar', examples: 'Brown Sugar, Honey, Molasses, Vanilla' }
+    ]},
+    { name: 'Nutty', color: '#A67C52', subs: [
+      { name: 'Almond', examples: 'Almond, Marzipan' },
+      { name: 'Hazelnut', examples: 'Hazelnut, Praline' },
+      { name: 'Peanut', examples: 'Peanut, Roasted Nuts, Walnut' }
+    ]},
+    { name: 'Floral', color: '#C490D1', subs: [
+      { name: 'Jasmine', examples: 'Jasmine, Honeysuckle' },
+      { name: 'Rose', examples: 'Rose, Lavender, Chamomile' },
+      { name: 'Bergamot', examples: 'Bergamot, Earl Grey, Orange Blossom' }
+    ]},
+    { name: 'Spicy', color: '#D47B4A', subs: [
+      { name: 'Warm Spice', examples: 'Cinnamon, Nutmeg, Clove' },
+      { name: 'Pepper', examples: 'Black Pepper, Ginger, Cardamom' }
+    ]},
+    { name: 'Earthy', color: '#7A8B6E', subs: [
+      { name: 'Woody', examples: 'Cedar, Oak, Pine' },
+      { name: 'Tobacco', examples: 'Tobacco, Leather, Mushroom' },
+      { name: 'Herbal', examples: 'Green Tea, Sage, Grass' }
+    ]},
+    { name: 'Roasty', color: '#5C4033', subs: [
+      { name: 'Smoky', examples: 'Campfire, Ash, Charcoal' },
+      { name: 'Toast', examples: 'Toast, Grain, Cereal, Bread' },
+      { name: 'Dark Cocoa', examples: 'Bittersweet, Espresso, Dark Roast' }
+    ]}
+  ];
+
+  var svg = document.getElementById('flavor-wheel');
+  var tip = document.getElementById('wheel-tip');
+  var legend = document.getElementById('wheel-legend');
+  if (!svg || !tip || !legend) return;
+
+  var NS = 'http://www.w3.org/2000/svg';
+  var cx = 250, cy = 250;
+  var r1 = 60, r2 = 140, r3 = 220; // center label, inner ring, outer ring
+
+  // Count total subs for proportional sizing
+  var totalSubs = 0;
+  categories.forEach(function(c) { totalSubs += c.subs.length; });
+
+  function polarToCart(angle, radius) {
+    var rad = (angle - 90) * Math.PI / 180;
+    return { x: cx + radius * Math.cos(rad), y: cy + radius * Math.sin(rad) };
+  }
+
+  function makeArc(startAngle, endAngle, innerR, outerR) {
+    var s1 = polarToCart(startAngle, innerR);
+    var e1 = polarToCart(endAngle, innerR);
+    var s2 = polarToCart(startAngle, outerR);
+    var e2 = polarToCart(endAngle, outerR);
+    var large = (endAngle - startAngle) > 180 ? 1 : 0;
+    return 'M ' + s2.x + ' ' + s2.y +
+      ' A ' + outerR + ' ' + outerR + ' 0 ' + large + ' 1 ' + e2.x + ' ' + e2.y +
+      ' L ' + e1.x + ' ' + e1.y +
+      ' A ' + innerR + ' ' + innerR + ' 0 ' + large + ' 0 ' + s1.x + ' ' + s1.y +
+      ' Z';
+  }
+
+  function lighten(hex, amt) {
+    var num = parseInt(hex.slice(1), 16);
+    var r = Math.min(255, (num >> 16) + amt);
+    var g = Math.min(255, ((num >> 8) & 0x00FF) + amt);
+    var b = Math.min(255, (num & 0x0000FF) + amt);
+    return '#' + (0x1000000 + (r << 16) + (g << 8) + b).toString(16).slice(1);
+  }
+
+  // Center circle
+  var centerCircle = document.createElementNS(NS, 'circle');
+  centerCircle.setAttribute('cx', cx);
+  centerCircle.setAttribute('cy', cy);
+  centerCircle.setAttribute('r', r1);
+  centerCircle.setAttribute('fill', '#2C1810');
+  svg.appendChild(centerCircle);
+
+  var centerText = document.createElementNS(NS, 'text');
+  centerText.setAttribute('x', cx);
+  centerText.setAttribute('y', cy);
+  centerText.setAttribute('text-anchor', 'middle');
+  centerText.setAttribute('dominant-baseline', 'central');
+  centerText.setAttribute('fill', '#D4A574');
+  centerText.setAttribute('font-size', '11');
+  centerText.setAttribute('font-weight', '600');
+  centerText.setAttribute('letter-spacing', '2');
+  centerText.textContent = 'FLAVOR';
+  svg.appendChild(centerText);
+
+  var angle = 0;
+
+  categories.forEach(function(cat) {
+    var catSpan = (cat.subs.length / totalSubs) * 360;
+    var catStart = angle;
+    var catEnd = angle + catSpan;
+
+    // Inner ring — category
+    var innerPath = document.createElementNS(NS, 'path');
+    innerPath.setAttribute('d', makeArc(catStart, catEnd - 0.5, r1 + 2, r2));
+    innerPath.setAttribute('fill', cat.color);
+    innerPath.setAttribute('class', 'wheel-slice');
+    svg.appendChild(innerPath);
+
+    // Category label
+    var midAngle = catStart + catSpan / 2;
+    var labelPos = polarToCart(midAngle, (r1 + r2) / 2);
+    var catLabel = document.createElementNS(NS, 'text');
+    catLabel.setAttribute('x', labelPos.x);
+    catLabel.setAttribute('y', labelPos.y);
+    catLabel.setAttribute('text-anchor', 'middle');
+    catLabel.setAttribute('dominant-baseline', 'central');
+    catLabel.setAttribute('fill', '#fff');
+    catLabel.setAttribute('font-size', '11');
+    catLabel.setAttribute('font-weight', '600');
+    // Rotate text to follow the wheel
+    var rotation = midAngle;
+    if (rotation > 90 && rotation < 270) rotation += 180;
+    catLabel.setAttribute('transform', 'rotate(' + rotation + ' ' + labelPos.x + ' ' + labelPos.y + ')');
+    catLabel.textContent = cat.name;
+    svg.appendChild(catLabel);
+
+    // Outer ring — subcategories
+    var subAngle = catStart;
+    var subSpan = catSpan / cat.subs.length;
+
+    cat.subs.forEach(function(sub) {
+      var subStart = subAngle;
+      var subEnd = subAngle + subSpan;
+
+      var outerPath = document.createElementNS(NS, 'path');
+      outerPath.setAttribute('d', makeArc(subStart, subEnd - 0.5, r2 + 2, r3));
+      outerPath.setAttribute('fill', lighten(cat.color, 40));
+      outerPath.setAttribute('class', 'wheel-slice');
+      svg.appendChild(outerPath);
+
+      // Sub label
+      var subMid = subStart + subSpan / 2;
+      var subPos = polarToCart(subMid, (r2 + r3) / 2);
+      var subLabel = document.createElementNS(NS, 'text');
+      subLabel.setAttribute('x', subPos.x);
+      subLabel.setAttribute('y', subPos.y);
+      subLabel.setAttribute('text-anchor', 'middle');
+      subLabel.setAttribute('dominant-baseline', 'central');
+      subLabel.setAttribute('fill', '#2C1810');
+      subLabel.setAttribute('font-size', '9');
+      subLabel.setAttribute('font-weight', '500');
+      var subRot = subMid;
+      if (subRot > 90 && subRot < 270) subRot += 180;
+      subLabel.setAttribute('transform', 'rotate(' + subRot + ' ' + subPos.x + ' ' + subPos.y + ')');
+      subLabel.textContent = sub.name;
+      svg.appendChild(subLabel);
+
+      // Tooltip on hover/tap
+      function showTip(e) {
+        tip.textContent = sub.name + ': ' + sub.examples;
+        tip.classList.add('show');
+        var rect = svg.closest('.wheel-container').getBoundingClientRect();
+        var svgRect = svg.getBoundingClientRect();
+        var scale = svgRect.width / 500;
+        var px = subPos.x * scale + svgRect.left - rect.left;
+        var py = subPos.y * scale + svgRect.top - rect.top;
+        tip.style.left = px + 'px';
+        tip.style.top = py + 'px';
+      }
+      function hideTip() {
+        tip.classList.remove('show');
+      }
+      outerPath.addEventListener('mouseenter', showTip);
+      outerPath.addEventListener('mouseleave', hideTip);
+      outerPath.addEventListener('touchstart', function(e) {
+        e.preventDefault();
+        showTip(e);
+        setTimeout(hideTip, 2500);
+      }, { passive: false });
+
+      subAngle = subEnd;
+    });
+
+    angle = catEnd;
+  });
+
+  // Build legend
+  categories.forEach(function(cat) {
+    var item = document.createElement('div');
+    item.className = 'wheel-legend-item';
+    var dot = document.createElement('div');
+    dot.className = 'wheel-legend-dot';
+    dot.style.backgroundColor = cat.color;
+    item.appendChild(dot);
+    var text = document.createElement('div');
+    var h4 = document.createElement('h4');
+    h4.textContent = cat.name;
+    text.appendChild(h4);
+    var p = document.createElement('p');
+    p.textContent = cat.subs.map(function(s) { return s.name; }).join(', ');
+    text.appendChild(p);
+    item.appendChild(text);
+    legend.appendChild(item);
   });
 })();
 </script>

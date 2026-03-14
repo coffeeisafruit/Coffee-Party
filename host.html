@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Host Cheat Sheet — Joe's 40th</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+  :root {
+    --espresso: #2C1810;
+    --crema: #D4A574;
+    --parchment: #F5F0E8;
+    --warm-white: #FDFBF7;
+    --sage: #5C6B54;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--warm-white);
+    color: var(--espresso);
+    line-height: 1.7;
+    padding: 40px 20px 80px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 4px;
+  }
+  .subtitle {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #7a6b5f;
+    margin-bottom: 36px;
+  }
+  .phase {
+    margin-bottom: 32px;
+  }
+  .phase-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 10px;
+  }
+  .phase-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px 24px;
+    border: 1px solid rgba(212,165,116,0.2);
+    margin-bottom: 12px;
+  }
+  .card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
+  .card p, .card li {
+    font-size: 0.85rem;
+    color: #5a4a3f;
+    line-height: 1.7;
+  }
+  .card ul {
+    list-style: none;
+    padding: 0;
+  }
+  .card li {
+    padding: 4px 0;
+    padding-left: 16px;
+    position: relative;
+  }
+  .card li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--crema);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+  }
+  th {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--crema);
+    text-align: left;
+    padding: 6px 8px;
+    border-bottom: 1px solid rgba(212,165,116,0.2);
+  }
+  td {
+    font-size: 0.82rem;
+    padding: 8px;
+    border-bottom: 1px solid rgba(212,165,116,0.1);
+  }
+  td:last-child {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 500;
+    text-align: right;
+  }
+  .highlight-box {
+    background: var(--parchment);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin: 12px 0;
+  }
+  .highlight-box .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--crema);
+    margin-bottom: 6px;
+  }
+  .big-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--espresso);
+  }
+  .checklist {
+    list-style: none;
+    padding: 0;
+  }
+  .checklist li {
+    padding: 8px 0;
+    padding-left: 28px;
+    position: relative;
+    font-size: 0.88rem;
+    border-bottom: 1px solid rgba(212,165,116,0.1);
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 16px;
+    height: 16px;
+    border: 1.5px solid var(--crema);
+    border-radius: 4px;
+  }
+  .step-num {
+    display: inline-block;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    color: var(--crema);
+    width: 24px;
+  }
+  .divider {
+    width: 60px;
+    height: 2px;
+    background: var(--crema);
+    margin: 32px auto;
+  }
+</style>
+</head>
+<body>
+
+<h1>Host Cheat Sheet</h1>
+<p class="subtitle">Joe's 40th — March 14, 2026</p>
+
+<!-- NIGHT BEFORE -->
+<div class="phase">
+  <div class="phase-label">The Night Before</div>
+  <div class="phase-title">Make the Concentrate</div>
+  <div class="card">
+    <h3>Water Mineral Mix</h3>
+    <p>Combine in 1 cup of warm distilled water. Stir until fully dissolved. Set aside.</p>
+    <div class="highlight-box">
+      <table>
+        <tr><th>Mineral</th><th>Amount</th></tr>
+        <tr><td>Epsom Salt</td><td>2.4g</td></tr>
+        <tr><td>Calcium Chloride</td><td>1.8g</td></tr>
+        <tr><td>Baking Soda</td><td>1.0g</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- MORNING OF -->
+<div class="phase">
+  <div class="phase-label">Morning Of</div>
+  <div class="phase-title">1. Water</div>
+  <div class="card">
+    <ul>
+      <li>Pour 8 gallons distilled into the 5-gal pot (fill, heat, refill as needed)</li>
+      <li>Pour the concentrate in, stir</li>
+      <li>Heat to <strong>200°F</strong></li>
+      <li>Fill 3 kettles from the pot</li>
+    </ul>
+  </div>
+</div>
+
+<div class="phase">
+  <div class="phase-title">2. Grind</div>
+  <div class="card">
+    <div class="highlight-box">
+      <div class="label">Virtuoso Setting</div>
+      <div class="big-num">30</div>
+      <p style="font-size:0.78rem; color:#7a6b5f; margin-top:4px;">Coarse — like rough sand</p>
+    </div>
+    <p style="margin-top:12px;">For each coffee: weigh <strong>33.2g</strong> beans, grind, split into <strong>4 cups × 8.3g</strong>.</p>
+    <table>
+      <tr><th>#</th><th>Coffee</th><th>Beans</th></tr>
+      <tr><td>1</td><td>Color — Peru</td><td>33.2g</td></tr>
+      <tr><td>2</td><td>Hydrangea — Ethiopia</td><td>33.2g</td></tr>
+      <tr><td>3</td><td>An(other) — Colombia</td><td>33.2g</td></tr>
+      <tr><td>4</td><td>Brandywine — Co-ferment</td><td>33.2g</td></tr>
+      <tr><td>5</td><td>Valor — Kenya Mara</td><td>33.2g</td></tr>
+      <tr><td>6</td><td>GFN — Kenya Muthuthini</td><td>33.2g</td></tr>
+    </table>
+    <div class="highlight-box" style="margin-top:12px; text-align:center;">
+      <div class="label">Total Coffee</div>
+      <div class="big-num">199.2g</div>
+    </div>
+  </div>
+</div>
+
+<div class="phase">
+  <div class="phase-title">3. Station Setup ×4</div>
+  <div class="card">
+    <ul class="checklist">
+      <li>6 cups with grounds (numbered 1–6)</li>
+      <li>7–8 cupping spoons</li>
+      <li>1 rinse cup (hot water)</li>
+      <li>1 dump cup</li>
+      <li>Crackers + water glasses at each seat</li>
+    </ul>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- SHOWTIME -->
+<div class="phase">
+  <div class="phase-label">Showtime</div>
+  <div class="phase-title">Run the Cupping</div>
+  <div class="card">
+    <h3>Guided Round — Cups 1 & 2</h3>
+    <ul>
+      <li><span class="step-num">1.</span> "Pick up cup one — smell the dry grounds"</li>
+      <li><span class="step-num">2.</span> Pour all 4 stations (3 kettles + refill, ~2 min)</li>
+      <li><span class="step-num">3.</span> "We wait 4 minutes" — explain what's happening</li>
+      <li><span class="step-num">4.</span> "Take your spoon — break the crust, nose over the cup"</li>
+      <li><span class="step-num">5.</span> "Skim off the floating grounds"</li>
+      <li><span class="step-num">6.</span> "Now slurp — loud as you can"</li>
+      <li><span class="step-num">7.</span> "Write down what you taste"</li>
+      <li><span class="step-num">8.</span> Repeat for cup 2</li>
+      <li><span class="step-num">9.</span> "Go back to both as they cool"</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h3>Palate Reset</h3>
+    <p>Crackers, water, conversation. 10–15 min. Let people compare notes on cups 1 & 2.</p>
+  </div>
+  <div class="card">
+    <h3>Blind Round — Cups 3–6</h3>
+    <ul>
+      <li>Set up 4 new cups at each station</li>
+      <li>"You know the drill — go at your own pace"</li>
+      <li>Walk the room, answer questions, vibe</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h3>Vote & Reveal</h3>
+    <ul>
+      <li>"Which was your favorite blind cup?"</li>
+      <li>Tally votes</li>
+      <li>Reveal names, origins, processes, prices</li>
+    </ul>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- POUR CHEAT -->
+<div class="phase">
+  <div class="phase-label">Quick Reference</div>
+  <div class="phase-title">Pour Plan</div>
+  <div class="card">
+    <ul>
+      <li>3 kettles → pour stations 1, 2, 3 simultaneously</li>
+      <li>Refill one kettle from big pot</li>
+      <li>Pour station 4</li>
+      <li>Total time: ~2 minutes</li>
+    </ul>
+    <div class="highlight-box" style="margin-top:12px;">
+      <div class="label">Water Temp</div>
+      <div class="big-num">200°F</div>
+    </div>
+    <div class="highlight-box">
+      <div class="label">Steep Time</div>
+      <div class="big-num">4 minutes</div>
+    </div>
+    <div class="highlight-box">
+      <div class="label">Dose per Cup</div>
+      <div class="big-num">8.3g / 150ml</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
